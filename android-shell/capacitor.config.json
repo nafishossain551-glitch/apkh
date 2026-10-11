@@ -1,0 +1,9 @@
+{
+  "appId": "com.healthmind.app",
+  "appName": "HealthMind AI",
+  "webDir": "www",
+  "server": {
+    "url": "https://YOUR-APP.lovable.app",
+    "cleartext": false
+  }
+}

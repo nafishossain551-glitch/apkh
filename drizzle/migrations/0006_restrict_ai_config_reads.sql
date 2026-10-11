@@ -1,0 +1,10 @@
+DROP POLICY IF EXISTS "signed-in read" ON public.ai_rules;
+DROP POLICY IF EXISTS "signed-in read" ON public.ai_settings;
+DROP POLICY IF EXISTS "signed-in read" ON public.response_rules;
+DROP POLICY IF EXISTS "signed-in read" ON public.safety_rules;
+DROP POLICY IF EXISTS "signed-in read" ON public.knowledge_documents;
+DROP POLICY IF EXISTS "signed-in read" ON public.medicine_knowledge;
+CREATE POLICY "published read" ON public.knowledge_documents FOR SELECT TO authenticated USING (status = 'published');
+CREATE POLICY "published read" ON public.medicine_knowledge FOR SELECT TO authenticated USING (status = 'published');
+REVOKE EXECUTE ON FUNCTION public.handle_new_user() FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.has_role(uuid, public.app_role) FROM PUBLIC, anon;

@@ -1,0 +1,14 @@
+Manual APK build (needs Node 20+, JDK 21, Android Studio/SDK)
+
+1. Edit capacitor.config.json -> set "url" to your published site URL.
+2. In this folder:
+   npm install
+   npx cap add android
+3. Open android/app/src/main/AndroidManifest.xml, add under INTERNET line:
+   <uses-permission android:name="android.permission.RECORD_AUDIO" />
+   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+4. npx cap sync android
+5. cd android
+   Windows: gradlew.bat assembleDebug
+   Mac/Linux: ./gradlew assembleDebug
+6. APK: android/app/build/outputs/apk/debug/app-debug.apk

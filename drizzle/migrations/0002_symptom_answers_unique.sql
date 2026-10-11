@@ -1,0 +1,1 @@
+DO $$ BEGIN ALTER TABLE public.symptom_answers ADD CONSTRAINT symptom_answers_session_position_key UNIQUE (session_id, position); EXCEPTION WHEN duplicate_object OR duplicate_table THEN NULL; END $$;
